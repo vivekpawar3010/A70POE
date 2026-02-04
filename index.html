@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vivek Task Manager</title>
+  <link rel="icon" href="/A70POE/gemini3.svg" type="image/svg+xml">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=80');
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --text-main: #1e293b;
+      --text-muted: #475569;
+      --accent: #3b82f6;
+      --border: rgba(0, 0, 0, 0.05);
+      --glass-blur: 12px;
+    }
+
+    /* Lush Jungle Style */
+    [data-theme='green-leaves'], [data-base='green-leaves'] {
+      --preset-bg: url('https://images.unsplash.com/photo-1501004318641-729e8e26abd0?auto=format&fit=crop&w=2000&q=80');
+      --card-bg: rgba(255, 255, 255, 0.75);
+      --text-main: #064e3b;
+      --text-muted: #065f46;
+      --accent: #10b981;
+      --border: rgba(6, 78, 59, 0.1);
+    }
+    [data-theme='green-leaves'] { --bg-image: var(--preset-bg); }
+
+    /* Aroma Coffee Style */
+    [data-theme='aroma-coffee'], [data-base='aroma-coffee'] {
+      --preset-bg: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2000&q=80');
+      --card-bg: rgba(252, 250, 242, 0.85);
+      --text-main: #451a03;
+      --text-muted: #92400e;
+      --accent: #b45309;
+      --border: rgba(69, 26, 3, 0.1);
+    }
+    [data-theme='aroma-coffee'] { --bg-image: var(--preset-bg); }
+
+    /* Golden Honey Style */
+    [data-theme='honeycomb'], [data-base='honeycomb'] {
+      --preset-bg: url('https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=2000&q=80');
+      --card-bg: rgba(255, 252, 235, 0.85);
+      --text-main: #78350f;
+      --text-muted: #b45309;
+      --accent: #f59e0b;
+      --border: rgba(120, 53, 15, 0.1);
+    }
+    [data-theme='honeycomb'] { --bg-image: var(--preset-bg); }
+
+    /* Arctic Frost Style */
+    [data-theme='blue-winter'], [data-base='blue-winter'] {
+      --preset-bg: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=2000&q=80');
+      --card-bg: rgba(240, 249, 255, 0.8);
+      --text-main: #0c4a6e;
+      --text-muted: #0369a1;
+      --accent: #0ea5e9;
+      --border: rgba(12, 74, 110, 0.1);
+    }
+    [data-theme='blue-winter'] { --bg-image: var(--preset-bg); }
+
+    /* Midnight Nebula Style */
+    [data-theme='dark-night'], [data-base='dark-night'] {
+      --preset-bg: url('https://images.unsplash.com/photo-1436891620584-47fd0e565afb?auto=format&fit=crop&w=2000&q=80');
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #818cf8;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+    [data-theme='dark-night'] { --bg-image: var(--preset-bg); }
+
+    /* Custom Theme Support */
+    [data-theme='custom'] {
+      --bg-image: var(--custom-url);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--text-main);
+      transition: background 0.6s ease-in-out;
+      min-height: 100vh;
+    }
+
+    .glass {
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--border);
+    }
+    
+    .content-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+    }
+
+    input, textarea {
+      background: transparent;
+      outline: none;
+    }
+
+    .tab-active {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 10px 25px -5px var(--accent);
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; opacity: 0.3; }
+
+    .designer-panel {
+      animation: slideDown 0.4s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+
+<link rel="stylesheet" href="/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/A70POE/assets/index-DNcuOO0O.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

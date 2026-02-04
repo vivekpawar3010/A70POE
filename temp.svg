@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Gold Crown Gradient -->
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6e7a1"/>
+      <stop offset="100%" stop-color="#d4af37"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Black Background -->
+  <rect width="512" height="512" fill="#0b0b0b"/>
+
+  <!-- 3-Side Square Border (Left, Right, Bottom only) -->
+  <path
+    d="M140 140
+       V390
+       H372
+       V140"
+    fill="none"
+    stroke="white"
+    stroke-width="18"
+    stroke-linecap="square"
+  />
+
+  <!-- Outer V Frame -->
+  <path
+    d="M160 150
+       L256 380
+       L352 150
+       L320 150
+       L256 330
+       L192 150
+       Z"
+    fill="white"
+  />
+
+  <!-- Inner V Cut -->
+  <path
+    d="M200 180
+       L256 300
+       L312 180
+       L292 180
+       L256 250
+       L220 180
+       Z"
+    fill="#0b0b0b"
+  />
+
+  <!-- Crown -->
+  <path
+    d="M186 95
+       L216 145
+       L256 95
+       L296 145
+       L326 95
+       L306 175
+       H206 Z"
+    fill="url(#goldGrad)"
+  />
+
+  <!-- Crown Jewels -->
+  <circle cx="216" cy="145" r="6" fill="#fff"/>
+  <circle cx="256" cy="95" r="6" fill="#fff"/>
+  <circle cx="296" cy="145" r="6" fill="#fff"/>
+</svg>
